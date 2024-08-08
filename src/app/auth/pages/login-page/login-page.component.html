@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row w-100">
+        <div class="col-md-6 col-lg-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">Iniciar sesión</h2>
+                    <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="email">Correo electrónico:</label>
+                                <input
+                                 type="email" 
+                                 class="form-control" 
+                                 id="email" 
+                                 placeholder="Correo electrónico"
+                                 formControlName="email"
+                                >
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="pwd">Contraseña:</label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="pwd" 
+                                    placeholder="Contraseña"
+                                    formControlName="password"
+                                >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <button
+                                    type="submit" 
+                                    class="btn btn-primary btn-block"
+                                    [disabled]="loginForm.invalid"
+                                >Iniciar sesión</button>
+                            </div>
+                            <div class="col-7">
+                                <p>¿Aun no tienes una cuenta? <a [routerLink]="['/auth/register']">registrate aquí</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

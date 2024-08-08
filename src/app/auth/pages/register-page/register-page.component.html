@@ -1,0 +1,74 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row w-100">
+        <div class="col-md-6 col-lg-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">Crear cuenta </h2>
+                    <h5>Ingresa tus datos</h5>
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="text">Nombre:</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="name" 
+                                    placeholder="nombre"
+                                    formControlName="name"
+                                >
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="email">Correo electrónico:</label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="email" 
+                                    placeholder="Correo electrónico"
+                                    formControlName="email"
+                                >
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="pwd">Contraseña:</label>
+                                <input 
+                                type="password" 
+                                class="form-control" 
+                                id="pwd" 
+                                placeholder="Contraseña"
+                                formControlName="password"
+                            >
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="pwd">Confirmar contraseña:</label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="pwdc" 
+                                    placeholder="Confirmar contraseña"
+                                    formControlName="password_confirmation"
+                                >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-primary btn-block"
+                                    [disabled]="registerForm.invalid"
+                                >Crear cuenta</button>
+                            </div>
+                            <div class="col-7">
+                                <p>¿Ya tienes una cuenta? <a [routerLink]="[ '/auth/login']">ingresa aquí</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container card-container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Crear un nuevo usuario</h5>
+      </div>
+      <div class="card-body">
+        <ng-content>
+            <form (ngSubmit)="onSubmit()" [formGroup]="taskForm">
+                <!-- Nombre de la tarea -->
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                  />
+                </div>
+              
+                <!-- Descripción -->
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea
+                    id="description"
+                    class="form-control"
+                    formControlName="description"
+                    rows="3"
+                  ></textarea>
+                </div>
+              
+                <!-- Estado -->
+                <div class="mb-3">
+                  <label for="state" class="form-label">State</label>
+                  <select id="state" class="form-select" formControlName="state">
+                    <option [ngValue]="true">Active</option>
+                    <option [ngValue]="false">Inactive</option>
+                  </select>
+                </div>
+              
+                <!-- Subject -->
+                <div class="mb-3">
+                  <label for="subject_id" class="form-label">Subject</label>
+                  <select id="subject_id" class="form-select" formControlName="subject_id">
+                    <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.name }}</option>
+                  </select>
+                </div>
+              
+                <!-- Botones -->
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Save</button>
+                  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                </div>
+              </form>
+              
+        </ng-content>
+      </div>
+    </div>
+  </div>
+  

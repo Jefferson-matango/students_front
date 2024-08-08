@@ -1,0 +1,55 @@
+<div class="container card-container">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Crear un nuevo usuario</h5>
+    </div>
+    <div class="card-body">
+      <ng-content>
+        <div class="container mt-4">
+            <!-- Error Message -->
+            <div *ngIf="errorMessage()" class="alert alert-danger" role="alert">
+              {{ errorMessage() }}
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Tasks List</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Status</th>
+                      <th>Subject</th>
+                      <th>Created</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of tasks()">
+                      <td>{{ task.name }}</td>
+                      <td>{{ task.description }}</td>
+                      <td>{{ task.state ? 'Active' : 'Inactive' }}</td>
+                      <td>{{ getSubjectName(task.subject_id) }}</td>
+                      <td>{{ task.created_at | date:'short' }}</td>
+                      <td>
+                        <!-- Update button -->
+                        <a [routerLink]="['/dashboard/edit-task', task.id]" class="btn btn-primary btn-sm">
+                          Update
+                        </a>
+                        <!-- Delete button -->
+                        <button class="btn btn-danger btn-sm" (click)="onDelete(task.id)">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>                    
+      </ng-content>
+    </div>
+  </div>
+</div>
